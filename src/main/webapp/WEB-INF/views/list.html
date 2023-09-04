@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/add">Add new Blog</a>
+<h1>Blog</h1>
+<table border="1">
+    <tr>
+        <th>#</th>
+        <th>Content</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="b,loop : ${blog}">
+        <tr>
+            <td th:text="${loop.count}"></td>
+            <td th:text="${b.content}"></td>
+            <td th:text="${b.title}"></td>
+            <td th:text="${b.status?'Success':'Pending'}"></td>
+            <td><a th:href="@{/edit/__${b.id}__}">Edit</a></td>
+            <td><a th:href="@{/delete/__${b.id}__}">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+
+</body>
+</html>
